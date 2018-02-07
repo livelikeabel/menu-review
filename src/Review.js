@@ -1,46 +1,39 @@
-import React, { Component }from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Review.css';
 
-class Review extends Component{
-
-    static propTypes = {
-        profileImage: PropTypes.string.isRequired,
-        nickName: PropTypes.string.isRequired,
-        menuName: PropTypes.string.isRequired,
-        starRating: PropTypes.number.isRequired,
-        reviewComent: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired
-    }
-
-    render(){
-      console.log(this.props)
+function Review({profileImage, nickName, menuName, starRating, reviewComent, date}){
         return(
             <div>
-              <ProfileImage profileImage={this.props.profileImage}/>
-              <h1>{this.props.nickName}</h1>
+              <ProfileImage profileImage={profileImage}/>
+              <h1>{nickName}</h1>
               <div>
-                <h3>{this.props.menuName}</h3>
-                <h3>{this.props.starRating}</h3>
-                <h3>{this.props.reviewComent}</h3>
-                <h3>{this.props.date}</h3>
+                <h3>{menuName}</h3>
+                <h3>{starRating}</h3>
+                <h3>{reviewComent}</h3>
+                <h3>{date}</h3>
               </div>
             </div>
         )
-    }
 }
 
-class ProfileImage extends Component{
-
-    static propTypes = {
-        profileImage: PropTypes.string.isRequired
-    }
-
-    render(){
+function ProfileImage({profileImage}){
         return(
-            <img src={this.props.profileImage} alt="Profile Image"/>
+            <img src={profileImage} alt="Profile Image"/>
         )
-    }
+}
+
+Review.propTypes = {
+    profileImage: PropTypes.string.isRequired,
+    nickName: PropTypes.string.isRequired,
+    menuName: PropTypes.string.isRequired,
+    starRating: PropTypes.number.isRequired,
+    reviewComent: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired
+}
+
+ProfileImage.propTypes = {
+    profileImage: PropTypes.string.isRequired
 }
 
 export default Review;
